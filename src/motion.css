@@ -1,0 +1,79 @@
+/* Respostas curtas, sem atrasar o acesso ao conteúdo ou mover o layout. */
+:root {
+  --ease-interaction: cubic-bezier(.2, .7, .3, 1);
+  --motion-fast: 180ms;
+  --motion-soft: 280ms;
+}
+
+.product-card {
+  transition: transform var(--motion-soft) var(--ease-interaction),
+    box-shadow var(--motion-soft) var(--ease-interaction),
+    border-color var(--motion-fast) ease;
+}
+.product-card:hover { transform: none; box-shadow: none; }
+.product-card__media img {
+  transition: transform var(--motion-soft) var(--ease-interaction);
+  animation: product-change 220ms ease-out;
+}
+.button, .product-card__quote, .header-whatsapp,
+.product-carousel__options button, .footer__instagram {
+  transition: transform var(--motion-fast) var(--ease-interaction),
+    background-color var(--motion-fast) ease,
+    color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease,
+    box-shadow var(--motion-fast) ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.product-card__quote span, .hero__actions .button span {
+  display: inline-block;
+  transition: transform var(--motion-fast) var(--ease-interaction);
+}
+.catalog-intro strong, .hero__contact, .contact__resale,
+.hero-showcase__caption a { transition: color var(--motion-fast) ease; }
+
+@media (hover: hover) and (pointer: fine) {
+  .product-card:hover {
+    transform: translateY(-4px);
+    border-color: #9cad99;
+    box-shadow: 0 12px 28px rgba(18, 60, 44, .09);
+  }
+  .product-card:hover .product-card__media img { transform: scale(1.025); }
+  .button:hover, .product-card__quote:hover,
+  .header--white .site-nav > .header-whatsapp:hover { transform: translateY(-2px); }
+  .product-card__quote:hover span, .hero__actions .button:hover span { transform: translateX(3px); }
+  .product-carousel__options button:hover { transform: translateY(-1px); border-color: var(--green); }
+  .hero__contact:hover, .contact__resale:hover,
+  .hero-showcase__caption a:hover { color: var(--red); }
+}
+
+.button:active, .product-card__quote:active,
+.header--white .site-nav > .header-whatsapp:active,
+.product-carousel__options button:active { transform: translateY(0) scale(.98); }
+.button:focus-visible, .product-card__quote:focus-visible,
+.header-whatsapp:focus-visible, .product-carousel__options button:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 4px;
+}
+
+@keyframes product-change {
+  from { opacity: .65; }
+  to { opacity: 1; }
+}
+
+@media (hover: none) {
+  .product-card:hover, .button:hover, .product-card__quote:hover,
+  .footer__instagram:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .product-card:hover, .product-card:hover .product-card__media img,
+  .button:hover, .button:active, .button:focus-visible,
+  .product-card__quote:hover, .product-card__quote:active, .product-card__quote:focus-visible,
+  .product-card__quote:hover span, .hero__actions .button:hover span,
+  .product-carousel__options button:hover, .product-carousel__options button:active,
+  .header--white .site-nav > .header-whatsapp:hover,
+  .header--white .site-nav > .header-whatsapp:active,
+  .footer__instagram:hover, .footer__instagram:focus-visible,
+  .footer__column a:hover, .footer__column a:focus-visible { transform: none; }
+}

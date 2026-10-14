@@ -1,0 +1,152 @@
+/* Identidade Nobre: cores, tipografia e ritmo compartilhados pelo site. */
+:root {
+  --green-dark: #123c2c;
+  --green: #226044;
+  --red: #ac332b;
+  --ink: #18392b;
+  --muted: #59675d;
+  --paper: #f5f0e6;
+  --surface: #eee7da;
+  --line: #dcd7ca;
+  --font-body: "Segoe UI", Arial, sans-serif;
+  --font-heading: Georgia, "Times New Roman", serif;
+  --section-space: clamp(64px, 8vw, 112px);
+}
+
+body {
+  background: var(--paper);
+  font-family: var(--font-body);
+  line-height: 1.7;
+}
+button, input, select, textarea { font: inherit; }
+h1, h2, h3 { font-family: var(--font-heading); }
+h1, h2 { font-weight: 400; }
+h3 { font-weight: 700; line-height: 1.35; }
+.hero h1 { letter-spacing: -.045em; line-height: 1.08; }
+.hero h1 em { font-family: var(--font-heading); color: var(--red); }
+.section h2, .contact h2 { letter-spacing: -.035em; line-height: 1.2; }
+.eyebrow { font-family: var(--font-body); font-size: .72rem; letter-spacing: .15em; font-weight: 700; }
+.hero .eyebrow { color: var(--red); }
+
+.site-header.header--white,
+.site-header.header--white.is-scrolled,
+.site-header.header--white.nav-active { background: var(--paper); border-color: var(--line); }
+.header--white .site-nav > a, .nav-dropdown__trigger { font-weight: 600; }
+.site-header.header--white { min-height: 72px; padding-block: 8px; }
+.site-header.header--white.is-scrolled { min-height: 68px; padding-block: 6px; }
+.site-header .brand__logo { width: 140px; height: 56px; }
+.hero { background: var(--paper); padding-bottom: 96px; gap: 7%; }
+.hero__lead { color: var(--muted); line-height: 1.8; margin-top: 28px; }
+.hero__actions { margin-top: 36px; gap: 24px; }
+.hero__footnote { margin-top: 36px; color: var(--muted); }
+.hero-showcase { background: var(--surface); padding: 48px 24px 32px; }
+.hero-showcase__label, .hero-showcase__caption a { color: var(--green-dark); }
+.hero-showcase__caption { gap: 14px; }
+.hero-showcase__caption strong { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 400; }
+
+.section { padding-block: var(--section-space); }
+.section--split { gap: clamp(32px, 5vw, 72px); }
+.section__header { margin-bottom: 48px; }
+.section__copy p { line-height: 1.85; }
+.section--soft { background: var(--surface); }
+.catalog-intro { padding-block: 36px; }
+.catalog-intro a { padding-inline: 36px; gap: 12px; }
+.catalog-intro span { color: var(--red); }
+.catalog-intro strong { font-weight: 600; }
+
+.product-grid { gap: 28px; }
+.product-card { background: var(--paper); border-color: var(--line); }
+.product-card__media { background: #fffdfa; padding: 32px 24px 24px; }
+.product-card__body { padding: 32px; }
+.product-card h3 { font-size: 1.45rem; line-height: 1.35; }
+.product-card__tag { color: var(--red); background: transparent; padding: 0; font-weight: 700; }
+.product-card p { line-height: 1.8; }
+.product-specs div { padding-block: 12px; }
+/* Os dois modelos compartilham a altura de cada linha no desktop. */
+.filter-grid .product-card__media { min-height: 382px; align-content: start; }
+.filter-grid .product-card h3 { min-height: 2.7em; margin-block: 16px 0; }
+.filter-grid .product-specs { margin-block: 24px; }
+.filter-grid .product-specs div { align-items: start; min-height: 50px; }
+.filter-grid .product-specs div:last-child { min-height: 100px; }
+.filter-grid .product-benefit { min-height: 125px; }
+.filter-grid .product-card__quote { margin-top: auto; }
+.product-benefit { margin: 0 0 24px; color: var(--muted); }
+.product-benefit strong { display: block; margin-bottom: 6px; color: var(--green-dark); font-size: .85rem; }
+.footer__legal { margin: 0; line-height: 1.7; font-size: .78rem; overflow-wrap: anywhere; }
+.footer__bottom { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 32px 0; text-align: center; }
+.footer__legal { display: grid; gap: 6px; }
+.footer__legal p, .footer__copyright { margin: 0; }
+.footer__company-name { color: var(--paper); font-weight: 600; letter-spacing: .035em; }
+.footer__copyright { max-width: 100%; font-size: .75rem; line-height: 1.7; color: #b9c9be; }
+.product-carousel__options { gap: 8px; }
+.product-carousel__options button { background: var(--paper); border-color: var(--line); font-family: var(--font-body); }
+.product-carousel__options button.is-active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+.product-card__quote { color: #fff; background: var(--green-dark); padding: 14px 20px; border: 1px solid var(--green-dark); border-radius: 8px; }
+.product-card__quote span { color: #fff; }
+.product-card__quote:hover,
+.product-card__quote:focus-visible { color: #fff; background: var(--green); border-color: var(--green); }
+.complementary-grid .product-card__body { padding: 32px 26px; }
+.resale-callout { background: var(--surface); padding: 36px; gap: 28px; margin-top: 36px; }
+
+.button { font-family: var(--font-body); padding: 15px 24px; min-height: 52px; font-weight: 600; border-radius: 8px; }
+.button--primary { background: var(--green-dark); box-shadow: none; color: #fff; }
+.button--primary:hover { background: var(--green); }
+.button--outline { background: transparent; border-color: var(--green-dark); }
+.private-label { background: var(--green-dark); }
+.process { background: var(--surface); color: var(--green-dark); border-block: 1px solid var(--line); }
+.private-label .button--primary { background: var(--paper); color: var(--green-dark); }
+.private-label .button--primary:hover { background: var(--surface); }
+.private-label .eyebrow { color: #e5d3b0; }
+.process .section__header .eyebrow { color: var(--red); }
+.process .section__header p:not(.eyebrow) { color: var(--muted); }
+.private-label .section__copy p { color: #edf0e8; }
+.private-label .note-panel { padding: 36px; background: #214b39; border-color: #45624f; border-top-color: var(--red); }
+.private-label .note-panel h3 { color: #fff; }
+.private-label .note-panel p, .private-label .check-list li { color: #edf0e8; }
+.private-label .check-list { gap: 20px; }
+.private-label .check-list li { font-weight: 400; }
+.private-label .check-list li::before { border-color: #e5d3b0; }
+.process__steps { gap: 24px; }
+.process__steps article { background: var(--paper); border-color: var(--line); padding: 32px; }
+.process__steps span { color: var(--red); font-family: var(--font-heading); font-size: 2rem; font-weight: 400; margin-bottom: 24px; }
+.process__steps h3 { color: var(--green-dark); }
+.process__steps p { color: var(--muted); line-height: 1.8; }
+.note-panel, .factory-product { background: var(--surface); box-shadow: none; }
+.note-panel { border-top-color: var(--red); }
+.contact { background: var(--surface); padding: 56px; margin-block: 64px; gap: 40px; }
+.contact .eyebrow { color: var(--red); }
+.contact p { line-height: 1.8; }
+.site-footer { background: var(--green-dark); }
+.footer__main { gap: 40px; padding-block: 80px; }
+.footer__column h3 { color: var(--paper); }
+.footer__socials { display: flex; flex-wrap: wrap; gap: 12px; }
+.footer__facebook-icon { background: #1877f2; }
+.footer__facebook-icon svg { fill: #fff; stroke: none; }
+.footer__facebook:hover, .footer__facebook:focus-visible { border-color: #6faaff; background: rgba(24, 119, 242, .12); }
+
+@media (max-width: 1100px) {
+  .contact { margin-inline: 24px; padding: 40px; flex-wrap: wrap; }
+}
+@media (max-width: 900px) {
+  .site-header.header--white { min-height: 64px; padding-block: 6px; }
+  .site-header .brand__logo { width: 120px; height: 50px; }
+  .header--white .site-nav { background: var(--paper); }
+}
+@media (max-width: 760px) {
+  .filter-grid .product-card__media { min-height: 0; }
+  .filter-grid .product-card h3, .filter-grid .product-benefit,
+  .filter-grid .product-specs div, .filter-grid .product-specs div:last-child { min-height: 0; }
+  .hero { padding: 120px 24px 56px; gap: 40px; }
+  .hero h1 { font-size: clamp(3rem, 11vw, 4.3rem); }
+  .hero-showcase { padding: 32px 20px; }
+  .section { padding-block: 64px; }
+  .section__header { margin-bottom: 32px; }
+  .catalog-intro { padding-block: 12px; }
+  .catalog-intro a, .catalog-intro a:first-child { padding: 20px 0; }
+  .product-grid, .process__steps { gap: 24px; }
+  .product-card__body, .complementary-grid .product-card__body { padding: 28px 24px; }
+  .private-label .note-panel, .process__steps article { padding: 28px 24px; }
+  .resale-callout { padding: 28px 24px; }
+  .contact { margin: 32px 20px; padding: 32px 24px; gap: 28px; }
+  .footer__main { padding-block: 56px; gap: 32px; }
+}
