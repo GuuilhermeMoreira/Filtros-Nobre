@@ -1,3 +1,4 @@
+import Icon from "../Icon";
 import { useLanguage } from "../i18n";
 import { productImages } from "../productImages";
 import { useState } from "react";
@@ -86,7 +87,7 @@ function ProductCard({ product }) {
         </dl> : <p>{t(product.text)}</p>}
         {product.material && <p className="product-benefit" aria-live="polite"><strong>{t("Para o seu dia a dia")}</strong>{variant?.benefit ?? "Pode ser lavado até cinco vezes, permitindo reutilizar o filtro em novos preparos."}</p>}
         {variant?.size && <p className="product-selection" aria-live="polite">{t("Apresentação: ")}{t(variant.size)}</p>}
-        <a className="product-card__quote" href={t(whatsappUrl(message))} target="_blank" rel="noopener noreferrer" aria-label={t(`Solicitar orçamento de ${product.title}${variant ? ` ${variant.label}` : ""} pelo WhatsApp`)}>{t("Solicitar orçamento ")}<span aria-hidden="true">→</span></a>
+        <a className="product-card__quote" href={t(whatsappUrl(message))} target="_blank" rel="noopener noreferrer" aria-label={t(`Solicitar orçamento de ${product.title}${variant ? ` ${variant.label}` : ""} pelo WhatsApp`)}>{t("Solicitar orçamento ")}<span aria-hidden="true"><Icon name="arrowRight" /></span></a>
       </div>
     </article>
   );

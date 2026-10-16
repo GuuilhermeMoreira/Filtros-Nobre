@@ -1,3 +1,4 @@
+import Icon from "../Icon";
 import { useEffect, useState } from "react";
 
 const testimonials = [
@@ -60,7 +61,7 @@ export default function Testimonials() {
                 key={testimonial.category}
               >
                 <span className="testimonial-card__category">{testimonial.category}</span>
-                <div className="testimonial-card__stars" aria-label="Avaliação positiva">★★★★★</div>
+                <div className="testimonial-card__stars" aria-label="Avaliação positiva">{Array.from({ length: 5 }, (_, index) => <Icon key={index} name="star" />)}</div>
                 <blockquote>“{testimonial.quote}”</blockquote>
                 <div className="testimonial-card__person">
                   <img

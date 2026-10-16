@@ -1,3 +1,4 @@
+import Icon from "../Icon";
 import { useLanguage } from "../i18n";
 import { productImages } from "../productImages";
 import { contactUrl } from "../commercial";
@@ -89,7 +90,7 @@ export default function Footer() {
         </div>
         <p className="footer__copyright">{t("© ")}{t(new Date().getFullYear())}{t(" Filtros Nobre. Todos os direitos reservados.")}</p>
         <div className="footer__closing">
-          <span className="footer__origin"><span aria-hidden="true">◆</span>{t(" Indústria brasileira")}</span>
+          <span className="footer__origin"><Icon name="brazil" />{t(" Indústria brasileira")}</span>
         </div>
       </div>
     </footer>

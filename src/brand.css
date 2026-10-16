@@ -18,6 +18,13 @@ body {
   font-family: var(--font-body);
   line-height: 1.7;
 }
+.site-icon { display: inline-block; width: 20px; height: 20px; flex: 0 0 20px; vertical-align: middle; }
+.hero__contact, .hero-showcase__caption a { display: inline-flex; align-items: center; gap: 8px; }
+.button > .site-icon { margin-left: 4px; }
+.private-label-showcase__products .site-icon { width: 18px; height: 18px; }
+.footer__origin > .site-icon { width: 22px; height: 22px; flex-basis: 22px; color: #e5bb54; }
+.testimonial-card__stars { display: flex; align-items: center; gap: 4px; }
+.testimonial-card__stars .site-icon { width: 16px; height: 16px; flex-basis: 16px; fill: currentColor; }
 button, input, select, textarea { font: inherit; }
 h1, h2, h3 { font-family: var(--font-heading); }
 h1, h2 { font-weight: 400; }
