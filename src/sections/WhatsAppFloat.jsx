@@ -1,15 +1,17 @@
+import { useLanguage } from "../i18n";
 import { useEffect, useState } from "react";
 import { contactUrl } from "../commercial";
 
 export default function WhatsAppFloat() {
+  const { t } = useLanguage();
   const [showWelcome, setShowWelcome] = useState(true);
   useEffect(() => {
     const timeout = window.setTimeout(() => setShowWelcome(false), 4000);
     return () => window.clearTimeout(timeout);
   }, []);
   return (
-    <a className={`whatsapp-float${showWelcome ? " whatsapp-float--welcome" : ""}`} href={contactUrl} target="_blank" rel="noopener noreferrer" aria-label="Fale com a Nobre pelo WhatsApp. Atendemos todo o Brasil.">
-      <span className="whatsapp-float__label">Atendemos todo o Brasil</span>
+    <a className={`whatsapp-float${showWelcome ? " whatsapp-float--welcome" : ""}`} href={t(contactUrl)} target="_blank" rel="noopener noreferrer" aria-label={t("Fale com a Nobre pelo WhatsApp. Atendemos todo o Brasil.")}>
+      <span className="whatsapp-float__label">{t("Atendimento")}</span>
       <span className="whatsapp-float__icon">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.4-4.4A8.4 8.4 0 1 1 20.5 11.7Z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />

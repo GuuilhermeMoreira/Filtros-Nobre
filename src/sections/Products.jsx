@@ -1,4 +1,5 @@
-﻿import { productImages } from "../productImages";
+import { useLanguage } from "../i18n";
+import { productImages } from "../productImages";
 import { useState } from "react";
 import { whatsappUrl, resaleUrl } from "../commercial";
 
@@ -61,6 +62,7 @@ const complementary = [
   { slug: "panos-multiuso", title: "Panos multiuso", tag: "Limpeza", image: productImages.cleaningCloths, text: "Panos azuis para a limpeza do dia a dia. Embalagem com 5 unidades de 50 × 28 cm." },
 ];
 function ProductCard({ product }) {
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const variant = product.variants?.[activeIndex];
   const image = variant?.image ?? product.image;
@@ -68,40 +70,42 @@ function ProductCard({ product }) {
   return (
     <article id={product.slug} className={`product-card${!image ? " product-card--text" : ""}`}>
       {image && <div className="product-card__media">
-        <img key={image} src={image} alt={`${product.title} Nobre${variant ? `, ${variant.label}` : ""}`} loading="lazy" />
-        {product.variants && <div className="product-carousel__options" role="group" aria-label={`Escolha a apresentação de ${product.title}`}>
-          {product.variants.map((option, index) => <button key={option.label} type="button" className={index === activeIndex ? "is-active" : ""} aria-pressed={index === activeIndex} onClick={() => setActiveIndex(index)}>{option.label}</button>)}
+        <img key={image} src={image} alt={t(`${product.title} Nobre${variant ? `, ${variant.label}` : ""}`)} loading="lazy" />
+        {product.variants && <div className="product-carousel__options" role="group" aria-label={t(`Escolha a apresentação de ${product.title}`)}>
+          {product.variants.map((option, index) => <button key={option.label} type="button" className={index === activeIndex ? "is-active" : ""} aria-pressed={index === activeIndex} onClick={() => setActiveIndex(index)}>{t(option.label)}</button>)}
         </div>}
       </div>}
       <div className="product-card__body">
-        <span className="product-card__tag">{product.tag}</span>
-        <h3>{product.title}</h3>
+        <span className="product-card__tag">{t(product.tag)}</span>
+        <h3>{t(product.title)}</h3>
         {product.material ? <dl className="product-specs">
-          <div><dt>Modelo</dt><dd>{variant?.label ?? "103 Grande"}</dd></div>
-          <div><dt>Material</dt><dd>{product.material}</dd></div>
-          <div><dt>Cartucho</dt><dd>{product.quantity}</dd></div>
-          <div><dt>Aplicação</dt><dd>{product.application}</dd></div>
-        </dl> : <p>{product.text}</p>}
-        {product.material && <p className="product-benefit" aria-live="polite"><strong>Para o seu dia a dia</strong>{variant?.benefit ?? "Pode ser lavado até cinco vezes, permitindo reutilizar o filtro em novos preparos."}</p>}
-        {variant?.size && <p className="product-selection" aria-live="polite">Apresentação: {variant.size}</p>}
-        <a className="product-card__quote" href={whatsappUrl(message)} target="_blank" rel="noopener noreferrer" aria-label={`Solicitar orçamento de ${product.title}${variant ? ` ${variant.label}` : ""} pelo WhatsApp`}>Solicitar orçamento <span aria-hidden="true">→</span></a>
+          <div><dt>{t("Modelo")}</dt><dd>{variant?.label ?? "103 Grande"}</dd></div>
+          <div><dt>{t("Material")}</dt><dd>{t(product.material)}</dd></div>
+          <div><dt>{t("Cartucho")}</dt><dd>{t(product.quantity)}</dd></div>
+          <div><dt>{t("Aplicação")}</dt><dd>{t(product.application)}</dd></div>
+        </dl> : <p>{t(product.text)}</p>}
+        {product.material && <p className="product-benefit" aria-live="polite"><strong>{t("Para o seu dia a dia")}</strong>{variant?.benefit ?? "Pode ser lavado até cinco vezes, permitindo reutilizar o filtro em novos preparos."}</p>}
+        {variant?.size && <p className="product-selection" aria-live="polite">{t("Apresentação: ")}{t(variant.size)}</p>}
+        <a className="product-card__quote" href={t(whatsappUrl(message))} target="_blank" rel="noopener noreferrer" aria-label={t(`Solicitar orçamento de ${product.title}${variant ? ` ${variant.label}` : ""} pelo WhatsApp`)}>{t("Solicitar orçamento ")}<span aria-hidden="true">→</span></a>
       </div>
     </article>
   );
 }
 export default function Products() {
+  const { t } = useLanguage();
   return (
     <section className="section product-section" id="produtos" aria-labelledby="produtos-title">
-      <div className="section__header product-section__header"><div><p className="eyebrow">Modelos de filtros</p><h2 id="produtos-title">Um bom café começa com a escolha do filtro.</h2></div><p>Papel ou TNT: conheça os modelos, compare as apresentações e solicite um orçamento direto com nossa equipe.</p></div>
+      <div className="section__header product-section__header"><div><p className="eyebrow">{t("Modelos de filtros")}</p><h2 id="produtos-title">{t("Um bom café começa com a escolha do filtro.")}</h2></div><p>{t("Papel ou TNT: conheça os modelos, compare as apresentações e solicite um orçamento direto com nossa equipe.")}</p></div>
       <div className="product-grid filter-grid">{filters.map(product => <ProductCard key={product.slug} product={product} />)}</div>
-      <div className="resale-callout"><div><h3>A marca Nobre no seu comércio.</h3><p>Interessado em comprar para revenda? Fale com nossa equipe comercial.</p></div><a className="button button--outline" href={resaleUrl} target="_blank" rel="noopener noreferrer">Quero revender Nobre</a></div>
+      <div className="resale-callout"><div><h3>{t("A marca Nobre no seu comércio.")}</h3><p>{t("Interessado em comprar para revenda? Fale com nossa equipe comercial.")}</p></div><a className="button button--outline" href={t(resaleUrl)} target="_blank" rel="noopener noreferrer">{t("Quero revender Nobre")}</a></div>
     </section>
   );
 }
 export function OtherProducts() {
+  const { t } = useLanguage();
   return (
     <section className="section product-section section--soft" id="outros-produtos" aria-labelledby="outros-title">
-      <div className="section__header"><p className="eyebrow">Outros produtos Nobre</p><h2 id="outros-title">Da conservação à limpeza.</h2><p>Produtos Nobre para acompanhar os cuidados de cada dia.</p></div>
+      <div className="section__header"><p className="eyebrow">{t("Outros produtos Nobre")}</p><h2 id="outros-title">{t("Da conservação à limpeza.")}</h2><p>{t("Produtos Nobre para acompanhar os cuidados de cada dia.")}</p></div>
       <div className="product-grid complementary-grid">{complementary.map(product => <ProductCard key={product.slug} product={product} />)}</div>
     </section>
   );

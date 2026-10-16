@@ -1,4 +1,5 @@
-﻿import { productImages } from "../productImages";
+import { useLanguage } from "../i18n";
+import { productImages } from "../productImages";
 import { useEffect, useState } from "react";
 import { contactUrl } from "../commercial";
 
@@ -12,6 +13,7 @@ function WhatsAppIcon() {
 }
 
 export default function Header() {
+  const { t, language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -55,9 +57,19 @@ export default function Header() {
 
   return (
     <header className={"site-header header--white" + (isScrolled ? " is-scrolled" : "") + (isOpen ? " nav-active" : "")}>
-      <a className="brand" href="#inicio" aria-label="Filtros Nobre" onClick={closeMenu}>
-        <img className="brand__logo" src={productImages.logo} alt="" />
+      <a className="brand" href="#inicio" aria-label={t("Filtros Nobre")} onClick={closeMenu}>
+        <img className="brand__logo" src={productImages.logo} alt={t("")} />
       </a>
+
+      <label className="language-picker">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><ellipse cx="12" cy="12" rx="4" ry="9" /><path d="M3 12h18" /></svg>
+        <span className="sr-only">{t("Idioma do site")}</span>
+        <select value={language} onChange={event => setLanguage(event.target.value)}>
+          <option value="pt-BR" lang="pt-BR">PT-BR</option>
+          <option value="en" lang="en">English</option>
+          <option value="es" lang="es">Español</option>
+        </select>
+      </label>
 
       <button className="nav-toggle" type="button" aria-expanded={isOpen} aria-controls="site-nav" onClick={() => setIsOpen((open) => !open)}>
         <span className="nav-toggle__line" />
@@ -69,28 +81,28 @@ export default function Header() {
       <nav
         className={"site-nav" + (isOpen ? " is-open" : "")}
         id="site-nav"
-        aria-label="Navegação principal"
+        aria-label={t("Navegação principal")}
         onClick={(event) => {
           if (event.target.closest("a")) closeMenu();
         }}
       >
-        <a className={navClass("produtos")} href="#produtos">Produtos</a>
+        <a className={navClass("produtos")} href="#produtos">{t("Produtos")}</a>
 
-        <a className={navClass("marcas-proprias")} href="#marcas-proprias">Marcas próprias</a>
-        <a className={navClass("empresa")} href="#empresa">A empresa</a>
+        <a className={navClass("marcas-proprias")} href="#marcas-proprias">{t("Marcas próprias")}</a>
+        <a className={navClass("empresa")} href="#empresa">{t("A empresa")}</a>
 
-        <a className={navClass("qualidade")} href="#qualidade">Qualidade</a>
-        <a className={navClass("contato")} href="#contato">Contato</a>
-        <a className="header-whatsapp" href={contactUrl} target="_blank" rel="noopener noreferrer">
+        <a className={navClass("qualidade")} href="#qualidade">{t("Qualidade")}</a>
+        <a className={navClass("contato")} href="#contato">{t("Contato")}</a>
+        <a className="header-whatsapp" href={t(contactUrl)} target="_blank" rel="noopener noreferrer">
           <WhatsAppIcon />
-          <span>Solicitar orçamento</span>
+          <span>{t("Solicitar orçamento")}</span>
         </a>
       </nav>
 
       <button
         className={"nav-backdrop" + (isOpen ? " is-visible" : "")}
         type="button"
-        aria-label="Fechar menu"
+        aria-label={t("Fechar menu")}
         onClick={closeMenu}
         tabIndex={isOpen ? 0 : -1}
       />
