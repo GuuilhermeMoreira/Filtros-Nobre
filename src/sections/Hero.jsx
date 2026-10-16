@@ -12,7 +12,7 @@ export default function Hero() {
         <h1 id="hero-title">{t("Mais praticidade.")}<br />{t("Mais sabor.")}<br /><em>{t("Mais Nobre.")}</em></h1>
         <p className="hero__lead">{t("Do café passado na hora aos cuidados com a cozinha. Conheça a linha Nobre e encontre os produtos para o seu negócio.")}</p>
         <div className="hero__actions">
-          <a className="button button--primary" href="#produtos">{t("Conhecer os produtos ")}<span aria-hidden="true"><Icon name="arrowUpRight" /></span></a>
+          <a className="button button--primary" href="#produtos">{t("Conhecer os produtos ")}<span aria-hidden="true"><Icon name="arrowRight" /></span></a>
           <a className="hero__contact" href={t(contactUrl)} target="_blank" rel="noopener noreferrer">{t("Falar com a equipe")} <Icon name="arrowRight" /></a>
         </div>
         <p className="hero__footnote">{t("Linha Nobre para revenda · Filtros para marcas próprias")}</p>

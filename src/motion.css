@@ -60,6 +60,22 @@
   to { opacity: 1; }
 }
 
+/* Applied only after the observer is ready; content stays visible without JS. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal="pending"] { opacity: 0; translate: 0 22px; }
+  [data-reveal="visible"] {
+    animation: scroll-reveal 650ms cubic-bezier(.2, .7, .3, 1) both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+}
+@keyframes scroll-reveal {
+  from { opacity: 0; translate: 0 22px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@media print {
+  [data-reveal] { opacity: 1 !important; translate: none !important; animation: none !important; }
+}
+
 @media (hover: none) {
   .product-card:hover, .button:hover, .product-card__quote:hover,
   .footer__instagram:hover { transform: none; }

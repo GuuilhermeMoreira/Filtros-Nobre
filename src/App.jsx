@@ -10,7 +10,9 @@ import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import WhatsAppFloat from "./sections/WhatsAppFloat";
 import WelcomeIntro from "./sections/WelcomeIntro";
+import useScrollReveal from "./useScrollReveal";
 
 export default function App() {
+  useScrollReveal();
   return <><WelcomeIntro /><Header /><main id="inicio"><Hero /><QuickFacts /><Products /><OtherProducts /><PrivateLabel /><Moments /><Company /><Quality /><Contact /></main><Footer /><WhatsAppFloat /></>;
 }
