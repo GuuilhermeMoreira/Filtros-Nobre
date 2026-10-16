@@ -1,22 +1,33 @@
 import { useLanguage } from "../i18n";
+import Icon from "../Icon";
+import { contactUrl } from "../commercial";
+import { history } from "../company-history";
+import useHistoryScroll from "../useHistoryScroll";
 export default function Company() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const { sectionRef, frameRef, introRef, viewportRef, trackRef } = useHistoryScroll(language);
   return (
-    <section className="section section--split" id="empresa" aria-labelledby="empresa-title">
-      <div className="section__copy">
-        <p className="eyebrow">{t("A empresa")}</p>
-        <h2 id="empresa-title">{t("A indústria que cuida da marca do cliente com consistência.")}</h2>
-        <p>{t("A Filtros Nobre fabrica filtros de café para marcas próprias de clientes e comercializa sua linha Nobre. Estamos em Capela do Alto, São Paulo, e atendemos empresas de todo o Brasil.")}</p>
-        <p>{t("Desde 2011, nossa história está ligada aos filtros de café e aos produtos que fazem parte da rotina da cozinha.")}</p>
-        <p>{t("Nossa equipe reúne profissionais treinados e experientes para acompanhar seu pedido e orientar você na escolha dos produtos.")}</p>
-      </div>
-      <div className="note-panel">
-        <h3>{t("Indústria e marca Nobre")}</h3>
-        <ul className="check-list">
-          <li>{t("Fabricação de filtros com a marca do cliente.")}</li>
-          <li>{t("Embalagens personalizadas e acompanhamento comercial.")}</li>
-          <li>{t("Linha Nobre para compradores e revendedores.")}</li>
-        </ul>
+    <section ref={sectionRef} className="company-history" id="empresa" aria-labelledby="empresa-title">
+      <div ref={frameRef} className="company-history__frame">
+        <div ref={introRef} className="company-history__intro">
+          <p className="eyebrow">{t("Nossa trajetória")}</p>
+          <h2 id="empresa-title">{t("Uma história de trabalho, coragem e evolução")}</h2>
+          <p className="company-history__lead">{t("A história do Grupo Filtros Nobre nasceu da experiência na indústria, da parceria, do esforço familiar e da busca constante por crescimento e qualidade.")}</p>
+          <a className="button button--primary" href={t(contactUrl)} target="_blank" rel="noopener noreferrer">
+            {t("Fale com nossa equipe")} <Icon name="arrowRight" />
+          </a>
+        </div>
+        <div ref={viewportRef} className="company-history__viewport">
+        <ol ref={trackRef} className="company-history__timeline" aria-label={t("Retrospectiva da nossa história")}>
+          {history.map(({ date, title, text }) => (
+            <li className="company-history__milestone" key={date}>
+              <span className="company-history__date">{t(date)}</span>
+              <h3>{t(title)}</h3>
+              <p>{t(text)}</p>
+            </li>
+          ))}
+        </ol>
+        </div>
       </div>
     </section>
   );

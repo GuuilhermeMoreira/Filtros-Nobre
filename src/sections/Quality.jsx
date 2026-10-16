@@ -1,18 +1,25 @@
 import { useLanguage } from "../i18n";
-import { productImages } from "../productImages";
-import { privateLabelUrl } from "../commercial";
+const principles = [
+  ["Materiais adequados ao uso", "Cada produto começa pela escolha do material certo para a função que ele cumpre."],
+  ["Processo sob controle", "Verificações ao longo da produção para manter o resultado consistente."],
+  ["Embalagem que informa", "Quantidade, dimensões e orientações de uso claras para quem compra."],
+  ["Escuta ativa", "Contato de clientes e parceiros alimenta a melhoria contínua dos produtos."],
+];
 export default function Quality() {
   const { t } = useLanguage();
   return (
-    <section className="section section--split section--soft" id="qualidade" aria-labelledby="qualidade-title">
-      <div className="section__copy">
-        <p className="eyebrow">{t("Produto e qualidade")}</p>
-        <h2 id="qualidade-title">{t("Conheça o filtro que vai levar sua marca.")}</h2>
-        <p>{t("No catálogo Nobre, os filtros de papel são produzidos com fibras vegetais, nos modelos 100, 102 e 103. O filtro reutilizável TNT 103 é produzido em polipropileno.")}</p>
-        <p>{t("Converse com nossa equipe sobre as especificações do modelo escolhido e as informações técnicas para seu pedido.")}</p>
-        <a className="button button--outline" href={t(privateLabelUrl)} target="_blank" rel="noopener noreferrer">{t("Consultar informações técnicas")}</a>
+    <section className="quality-principles" id="qualidade" aria-labelledby="qualidade-title">
+      <div className="quality-principles__layout">
+        <h2 id="qualidade-title">{t("Como pensamos qualidade")}</h2>
+        <div className="quality-principles__grid">
+          {principles.map(([title, description]) => (
+            <article className="quality-principles__item" key={title}>
+              <h3>{t(title)}</h3>
+              <p>{t(description)}</p>
+            </article>
+          ))}
+        </div>
       </div>
-      <figure className="factory-product"><img src={productImages.filter102} alt={t("Embalagem Nobre de filtros de papel modelo 102, com 30 unidades")} loading="lazy" /><figcaption>{t("Modelo 102 da linha Nobre.")}</figcaption></figure>
     </section>
   );
 }

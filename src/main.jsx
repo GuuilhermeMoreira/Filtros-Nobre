@@ -8,6 +8,7 @@ import "./private-label.css";
 import "./motion.css";
 import "./whatsapp-float.css";
 import "./welcome-intro.css";
+import "./product-showcase.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

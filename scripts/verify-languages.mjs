@@ -25,7 +25,7 @@ try {
     assert(html.includes(product), `${language}: product translation`);
     assert(new RegExp(`<option(?=[^>]*value="${language}")(?=[^>]*selected="")[^>]*>`).test(html), `${language}: selected language`);
     const links = [...html.matchAll(/href="(https:\/\/wa\.me\/[^\"]+)"/g)];
-    assert.equal(links.length, 15);
+    assert.equal(links.length, 16);
     for (const [, raw] of links) {
       const url = new URL(raw.replaceAll("&amp;", "&"));
       assert.equal(url.pathname, "/5511947110241");
@@ -36,7 +36,7 @@ try {
         assert(!html.includes(portuguese), `${language}: untranslated ${portuguese}`);
       }
     }
-    console.log(`${language}: conteúdo, seletor e 15 links de WhatsApp válidos.`);
+    console.log(`${language}: conteúdo, seletor e 16 links de WhatsApp válidos.`);
   }
   assert.equal(translate("Solicitar orçamento de Filtros de papel pelo WhatsApp", "en"), "Request a quote for Paper coffee filters on WhatsApp");
   assert.equal(translate("Filtros Nobre. Todos os direitos reservados.", "es"), "Filtros Nobre. Todos los derechos reservados.");
