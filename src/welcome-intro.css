@@ -1,0 +1,87 @@
+.welcome-intro {
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  background: #083522;
+  color: #f5f0e6;
+  animation: welcome-reveal 2.4s ease-in-out both;
+}
+.welcome-intro__halo {
+  position: absolute;
+  inset: -25%;
+  background: radial-gradient(ellipse at 50% 48%, rgba(139, 174, 112, .17), transparent 52%);
+  animation: welcome-halo 2.4s ease-out both;
+}
+.welcome-intro__content { position: relative; width: min(88%, 1000px); text-align: center; }
+.welcome-intro__eyebrow {
+  display: block;
+  margin-bottom: clamp(20px, 4vh, 36px);
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  color: #d9c58f;
+  animation: welcome-detail .85s .1s ease-out both;
+}
+.welcome-intro__word {
+  display: flex;
+  justify-content: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(64px, 16vw, 208px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.045em;
+  padding-right: .045em;
+}
+.welcome-intro__word > span {
+  display: inline-block;
+  background: linear-gradient(155deg, #fffdf7 15%, #f0e6ce 55%, #b8bf9a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: welcome-letter 1.05s cubic-bezier(.16, 1, .3, 1) both;
+  animation-delay: calc(.12s + var(--letter-index) * .075s);
+}
+.welcome-intro__rule {
+  display: block;
+  width: clamp(52px, 7vw, 96px);
+  height: 1px;
+  margin: clamp(24px, 4vh, 40px) auto 20px;
+  background: linear-gradient(90deg, transparent, #d9c58f, transparent);
+  animation: welcome-rule .8s .45s ease-out both;
+}
+.welcome-intro__tagline {
+  margin: 0;
+  color: #c1d0be;
+  font-size: clamp(.7rem, 1.4vw, .9rem);
+  letter-spacing: .12em;
+  animation: welcome-detail .8s .55s ease-out both;
+}
+@keyframes welcome-reveal {
+  0%, 62% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@keyframes welcome-letter {
+  from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes welcome-detail {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes welcome-rule {
+  from { opacity: 0; transform: scaleX(.3); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+@keyframes welcome-halo {
+  from { opacity: .4; transform: scale(.85); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-intro { display: none; }
+  .welcome-intro, .welcome-intro * { animation: none; }
+}

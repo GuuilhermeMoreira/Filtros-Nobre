@@ -9,7 +9,8 @@ import Quality from "./sections/Quality";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import WhatsAppFloat from "./sections/WhatsAppFloat";
+import WelcomeIntro from "./sections/WelcomeIntro";
 
 export default function App() {
-  return <><Header /><main id="inicio"><Hero /><QuickFacts /><Products /><OtherProducts /><PrivateLabel /><Moments /><Company /><Quality /><Contact /></main><Footer /><WhatsAppFloat /></>;
+  return <><WelcomeIntro /><Header /><main id="inicio"><Hero /><QuickFacts /><Products /><OtherProducts /><PrivateLabel /><Moments /><Company /><Quality /><Contact /></main><Footer /><WhatsAppFloat /></>;
 }

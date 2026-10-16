@@ -7,6 +7,7 @@ import "./brand.css";
 import "./private-label.css";
 import "./motion.css";
 import "./whatsapp-float.css";
+import "./welcome-intro.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
